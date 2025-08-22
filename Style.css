@@ -1,0 +1,123 @@
+
+        /* Custom styles for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #1f2937; /* Dark gray text */
+            overflow-x: hidden;
+        }
+
+        /* Section Backgrounds - Light Theme */
+        #hero {
+            background-color: #ffffff;
+        }
+        #about, #experience, #certifications, #projects, #contact {
+            background-color: #f9fafb; /* Off-white for sections */
+        }
+        #about {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        #experience {
+             border-bottom: 1px solid #e5e7eb;
+        }
+        #certifications {
+             border-bottom: 1px solid #e5e7eb;
+        }
+        #projects {
+             border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        /* Canvas for particle animation */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            z-index: 1;
+        }
+
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Styling for the animated typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: #ec4899;
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scroll-triggered animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card hover effect */
+        .card-hover:hover img {
+            transform: scale(1.05);
+        }
+        .card-hover:hover .card-overlay {
+            opacity: 1;
+        }
+
+        /* Modal styles with glass effect - Light Theme */
+        .modal-backdrop {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1f2937;
+        }
+        
+        /* Timeline Styles - Light Theme */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #d1d5db;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 0;
+            height: 16px;
+            width: 16px;
+            background-color: #4f46e5;
+            border-radius: 50%;
+            border: 3px solid #f9fafb;
+        }
+        
+        /* Light theme header */
+        #header.scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+   

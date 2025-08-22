@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chahat Sharma | Frontend Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" src="Style.css" />
+  </head>
+  <body class="antialiased">
+    <!-- Header -->
+    <header
+      id="header"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold gradient-text">SR</a>
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#about"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            >About</a
+          >
+          <a
+            href="#experience"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            >Experience</a
+          >
+          <a
+            href="#certifications"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            >Certifications</a
+          >
+          <a
+            href="#projects"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            >Contact</a
+          >
+        </nav>
+        <a
+            href="Sajan_Rana_7777 (3).pdf"
+            download
+            class="hidden md:block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition items-center"
+          >
+            Download Resume
+          </a>
+
+        <a
+          href="#contact"
+          class="hidden md:block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition"
+          >Hire Me</a
+        >
+      </div>
+    </header>
+
+    <main>
+      
+      <!-- Hero Section -->
+      <section
+        id="hero"
+        class="relative h-screen flex items-center justify-center text-center "
+      >
+        <canvas id="particle-canvas" class="w-0"></canvas>
+        <div class="relative z-10 px-4">
+          <h1
+            class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter"
+          >
+            <span class="gradient-text">Sajan Rana</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl lg:text-3xl font-medium text-gray-600 mb-8"
+          >
+            I'm a <span id="typing-text" class="font-bold text-gray-800"></span
+            ><span class="typing-cursor"></span>
+          </p>
+
+          
+          <a
+            href="#projects"
+            class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
+          >
+            View My Work
+          </a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+              <img
+                src="data:image/webp;base64,UklGRggEAABXRUJQVlA4IPwDAAAwJACdASoCAQIBPp1OpE0lqCOiI5eIEQATiWdu4XVRGbwgzroDz2W3iohHZOaRFQQzDxlUJvrb/Zn2Fv1dDqANh2mqXVT4oObDtNUuqnxQc2HaapdVPig5sO01S6qfFBzYdpql1U+KDmw7TVLqpiqurFbID3wBMbPaBIop+l3TCW0OlNBMaJC8hAU+KDlqbJE9bs+J6d7WtA1TPRA+9TSeIbmLpMvfV0rsQdKGQVS6alfSJuvQtuAyJj+/w7lKLv65kUjstB9AvahN48O4CoSlXlBzYcbJAGsqwO7UpDZsqO9RfoKEgdUQ4OGgpSrRkpHJXpUDYdpq6KZsO01S6qfFBzYdpql1U+KDmw7TVLqp8UHNh2mqXVT4oObDtNUuqnxQc2HaapdVPiZAAP7/bpgAAAAMSp79O7apgfzEVAG3pgxaISw/c/qP/s9AEtts+jKd+wMKEXxjPjCf25Zw8lQX2fIv9ILLQHJJuuf2Eb46iwvtHe3eLZieDQ5hqu8NuZbvlV6ROYj+6T3vQkWVH1vcWILbp/B4OqpOWXf7dZ4r52RQzPZ5VJ70YF9cWwv7k+StJDA0TGj6Y1lM4EozunVmQshcW+VqNntCIe/ZIeU+2YgBh+vFEDgtbqbRwPxWXx41euy5T5A/0JVIH0l+mP4B6ndQuuM3gwK2F3GyZopgkypo9vSpnG004gpN5mbftAwlqoUyGVN6099d8H/V40wjSTWyHeRO8Dn+5htBdKlrat/grv3GjpuMRdaXK3zoKsrWb16fEJbdvHBWOnY6F38213rTA6ed80XdQgvsFXGt0JA51eAhYP6Wktd2FTvQodd4FbYKh4pg5vkL7PRxnGXrtUPLwAvXLJ5FzrbuaK4LoY+u4Sc9pNn5z6liVPzavJnrt7E6T+4HfEFA0GRjoaoQ/3ToGSqM1ezBEixiOn0+H/XOjB/dAWxWm7DuWs8l4UiuJXs+EI2pXOFRG1dONhfmH/O3rKsqn2B6smWS6ru2I2YlxMJHqfA2YY9MaWSAC+YoGDfwHZ+ACJmhMl9CnBXrKWGMjXRV+cOcDJ1IMmUyJbOgBLqxKbqPpXH7HJGj29IqL4R/5vNALkzI2VOxxCChUNTBG9e57fZVmq9mEn+ap0cJWo9ikl0f20PtZP6tDwqlOB+xNojRL3iu/6ujf4Mi48jQDyEET0P9JBGTYmtobUOB+nLXzh9gZw82ICJrArBg9VPiO6+rZNNYJDi8xDyqCLpIAAKSkpjYcvzDcCs8X41nd6Pgsllc3XEtdUmIEi8PCaq6xL1s06065UOZ7bJn0D+79i/AFqd3+s3iwYUkDs2piYTF3tEHAtA9P36k1ERl44nAM2gAAAAAAAA="
+                alt="Chahat Sharma Portrait"
+                class="rounded-2xl shadow-xl w-full max-w-md mx-auto"
+              />
+            </div>
+            <div class="reveal">
+              <h2 class="text-4xl font-bold mb-6">About Me</h2>
+              <p class="text-gray-600 mb-6 text-lg">
+                I'm a passionate frontend developer specializing in building
+                beautiful, interactive, and high-performance web applications.
+                With a strong eye for design and a deep understanding of modern
+                web technologies, I bring ideas to life from concept to
+                deployment.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <span
+                  class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
+                  >React.js</span
+                >
+                <span
+                  class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
+                  >JavaScript</span
+                >
+
+                <span
+                  class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
+                  >Tailwind CSS</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Timeline Section -->
+      <section id="experience" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-bold mb-4">Work Experience</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              My professional journey as a developer.
+            </p>
+          </div>
+          <div class="max-w-3xl mx-auto">
+            <div class="space-y-12">
+              <!-- Timeline Item -->
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="pl-4">
+                  <p class="text-indigo-600 font-medium text-sm mb-1">
+                    Jun 2025 - July 2025
+                  </p>
+                  <h3 class="font-bold text-xl mb-2">
+                    Front-end Developer (Intern)
+                  </h3>
+                  <p class="text-gray-700 font-medium mb-3">Bluestock</p>
+                  <p class="text-gray-500">
+                    Developed user-facing features and APIs using React.js,
+                    Node.js.
+                  </p>
+                </div>
+              </div>
+
+            
+              <!-- Timeline Item -->
+              <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="pl-4">
+                  <p class="text-indigo-600 font-medium text-sm mb-1">
+                    Dec 2024 - Jun 2025
+                  </p>
+                  <h3 class="font-bold text-xl mb-2">
+                    Web Development Trainee
+                  </h3>
+                  <p class="text-gray-700 font-medium mb-3">Saral Tech</p>
+                  <p class="text-gray-500">
+                    Built Front-end features using JavaScript and React.js,
+                    Node.js.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications Section -->
+      <section id="certifications" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-bold mb-4">Licenses & Certifications</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              A showcase of my credentials and ongoing learning.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- NOTE: Replace the placeholder URLs with your actual certificate image URLs -->
+
+            <div class="reveal card-hover group">
+              <div class="relative rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="https://i.imgur.com/your-summer-analytics-image.jpg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x420/fce7f3/831843?text=Summer+Analytics';"
+                  alt="Summer Analytics Certificate"
+                  class="w-full h-full object-cover transition-transform duration-500"
+                />
+                <div
+                  class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
+                >
+                  <h3 class="text-white text-lg font-bold">Summer Analytics</h3>
+                </div>
+              </div>
+            </div>
+            <div class="reveal card-hover group">
+              <div class="relative rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="https://i.imgur.com/your-job-prep-image.jpg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x420/dcfce7/14532d?text=Job+Preparation';"
+                  alt="Job Preparation Certificate"
+                  class="w-full h-full object-cover transition-transform duration-500"
+                />
+                <div
+                  class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
+                >
+                  <h3 class="text-white text-lg font-bold">
+                    Internship & Job Preparation
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="reveal card-hover group">
+              <div class="relative rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src=""
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x420/fef9c3/713f12?text=Web+Development';"
+                  alt="Web Development Certificate"
+                  class="w-full h-full object-cover transition-transform duration-500"
+                />
+                <div
+                  class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
+                >
+                  <h3 class="text-white text-lg font-bold">
+                    Web Development Training
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12 reveal">
+            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Here are a few projects I've worked on. Want to see more?
+              <a href="mailto:ranasajan509@gmail.com" class="text-indigo-600"
+                >Email me</a
+              >.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Project Cards will be dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12 reveal">
+            <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              I'm currently available for freelance work. Have a project in
+              mind? Let's talk.
+            </p>
+          </div>
+          <form id="contact-form" class="max-w-xl mx-auto reveal">
+            <div class="mb-4">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                required
+              />
+            </div>
+            <div class="mb-6">
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                required
+              ></textarea>
+            </div>
+            <div class="text-center">
+              <button
+                type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+          <p id="form-status" class="text-center mt-4"></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8">
+      <div class="container mx-auto px-6 text-center text-gray-500">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a
+            href="https://github.com/SajanRana777?tab=repositories"
+            target="_blank"
+            class="text-gray-400 hover:text-indigo-600 transition"
+            ><i class="fab fa-github fa-2x"></i
+          ></a>
+          <a
+            href="www.linkedin.com/in/sajan-rana-a97b90253"
+            target="_blank"
+            class="text-gray-400 hover:text-indigo-600 transition"
+            ><i class="fab fa-linkedin fa-2x"></i
+          ></a>
+        </div>
+        <p>&copy; 2024 Sajan Rana. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden"
+    >
+      <div
+        id="modal-content"
+        class="modal-content rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all duration-300 scale-95 opacity-0"
+      >
+        <!-- Content will be injected by JavaScript -->
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
