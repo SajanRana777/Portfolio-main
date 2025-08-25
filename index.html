@@ -1,21 +1,140 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sajan Rana | Frontend Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <link rel="stylesheet" src="Style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<script src="script.js" ></script>
+    <style>
+        /* Custom styles for the page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #1f2937; /* Dark gray text */
+            overflow-x: hidden;
+        }
+
+        /* Section Backgrounds - Light Theme */
+        #hero {
+            background-color: #ffffff;
+        }
+        #about, #experience, #certifications, #projects, #contact {
+            background-color: #f9fafb; /* Off-white for sections */
+        }
+        #about {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        #experience {
+             border-bottom: 1px solid #e5e7eb;
+        }
+        #certifications {
+             border-bottom: 1px solid #e5e7eb;
+        }
+        #projects {
+             border-bottom: 1px solid #e5e7eb;
+        }
+         
+        /* Canvas for particle animation */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #ececee, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Styling for the animated typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: #ec4899;
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scroll-triggered animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card hover effect */
+        .card-hover:hover img {
+            transform: scale(1.05);
+        }
+        .card-hover:hover .card-overlay {
+            opacity: 1;
+        }
+
+        /* Modal styles with glass effect - Light Theme */
+        .modal-backdrop {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1f2937;
+        }
+
+         /* Timeline Styles - Light Theme */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #d1d5db;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 0;
+            height: 16px;
+            width: 16px;
+            background-color: #4f46e5;
+            border-radius: 50%;
+            border: 3px solid #f9fafb;
+        }
+        
+        /* Light theme header */
+        #header.scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+
+
+
   </head>
   <body class="antialiased">
     <!-- Header -->
@@ -26,7 +145,7 @@
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold gradient-text text-white">SR</a>
+        <a href="#" class="text-2xl font-bold gradient-text text-white ">SR</a>
         <nav class="hidden md:flex space-x-8">
           <a
             href="#about"
@@ -114,26 +233,27 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-20 lg:py-32">
-        <div class="container mx-auto px-6">
-          <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-              <img
-                src="data:image/webp;base64,UklGRggEAABXRUJQVlA4IPwDAAAwJACdASoCAQIBPp1OpE0lqCOiI5eIEQATiWdu4XVRGbwgzroDz2W3iohHZOaRFQQzDxlUJvrb/Zn2Fv1dDqANh2mqXVT4oObDtNUuqnxQc2HaapdVPig5sO01S6qfFBzYdpql1U+KDmw7TVLqpiqurFbID3wBMbPaBIop+l3TCW0OlNBMaJC8hAU+KDlqbJE9bs+J6d7WtA1TPRA+9TSeIbmLpMvfV0rsQdKGQVS6alfSJuvQtuAyJj+/w7lKLv65kUjstB9AvahN48O4CoSlXlBzYcbJAGsqwO7UpDZsqO9RfoKEgdUQ4OGgpSrRkpHJXpUDYdpq6KZsO01S6qfFBzYdpql1U+KDmw7TVLqp8UHNh2mqXVT4oObDtNUuqnxQc2HaapdVPiZAAP7/bpgAAAAMSp79O7apgfzEVAG3pgxaISw/c/qP/s9AEtts+jKd+wMKEXxjPjCf25Zw8lQX2fIv9ILLQHJJuuf2Eb46iwvtHe3eLZieDQ5hqu8NuZbvlV6ROYj+6T3vQkWVH1vcWILbp/B4OqpOWXf7dZ4r52RQzPZ5VJ70YF9cWwv7k+StJDA0TGj6Y1lM4EozunVmQshcW+VqNntCIe/ZIeU+2YgBh+vFEDgtbqbRwPxWXx41euy5T5A/0JVIH0l+mP4B6ndQuuM3gwK2F3GyZopgkypo9vSpnG004gpN5mbftAwlqoUyGVN6099d8H/V40wjSTWyHeRO8Dn+5htBdKlrat/grv3GjpuMRdaXK3zoKsrWb16fEJbdvHBWOnY6F38213rTA6ed80XdQgvsFXGt0JA51eAhYP6Wktd2FTvQodd4FbYKh4pg5vkL7PRxnGXrtUPLwAvXLJ5FzrbuaK4LoY+u4Sc9pNn5z6liVPzavJnrt7E6T+4HfEFA0GRjoaoQ/3ToGSqM1ezBEixiOn0+H/XOjB/dAWxWm7DuWs8l4UiuJXs+EI2pXOFRG1dONhfmH/O3rKsqn2B6smWS6ru2I2YlxMJHqfA2YY9MaWSAC+YoGDfwHZ+ACJmhMl9CnBXrKWGMjXRV+cOcDJ1IMmUyJbOgBLqxKbqPpXH7HJGj29IqL4R/5vNALkzI2VOxxCChUNTBG9e57fZVmq9mEn+ap0cJWo9ikl0f20PtZP6tDwqlOB+xNojRL3iu/6ujf4Mi48jQDyEET0P9JBGTYmtobUOB+nLXzh9gZw82ICJrArBg9VPiO6+rZNNYJDi8xDyqCLpIAAKSkpjYcvzDcCs8X41nd6Pgsllc3XEtdUmIEi8PCaq6xL1s06065UOZ7bJn0D+79i/AFqd3+s3iwYUkDs2piYTF3tEHAtA9P36k1ERl44nAM2gAAAAAAAA="
-                alt="Sajan Rana Portrait"
-                class="rounded-2xl shadow-xl w-full max-w-md mx-auto"
-              />
-            </div>
-            <div class="reveal">
-              <h2 class="text-4xl font-bold mb-6">About Me</h2>
-              <p class="text-gray-600 mb-6 text-lg">
+      <section id="education" class="py-5 lg:py-30  h-full width-full ">
+        <div class="container mx-auto px-6 width-full ">
+           <div class="text-center  reveal  flex justify-center bg-gray-200 rounded-2xl shadow-2xl  ">
+                       <div class="reveal">
+              <h2 class="text-4xl font-bold mb-6 mt-4">About Me</h2>
+              <p class="text-gray-600 mb-16  text-lg font-bold">
                 I'm a passionate frontend developer specializing in building
                 beautiful, interactive, and high-performance web applications.
                 With a strong eye for design and a deep understanding of modern
                 web technologies, I bring ideas to life from concept to
                 deployment.
               </p>
-              <div class="flex flex-wrap gap-3">
+              <div class="flex flex-wrap gap-3 text-center justify-center mb-20">
+                <span
+                  class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
+                  >HTML</span
+                >
+                <span
+                  class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
+                  >CSS</span
+                >
                 <span
                   class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
                   >React.js</span
@@ -159,7 +279,7 @@
         <div class="container mx-auto px-6 width-full ">
           <div class="text-center mb-16 reveal  flex justify-center bg-gray-200 rounded-2xl shadow-2xl ">
            
-            <h2 class="text-4xl font-bold mb-4 underline   ">Education</h2> 
+            <h2 class="text-4xl font-bold mb-4 underline mt-4   ">Education</h2> 
          
 
           </div>
@@ -210,6 +330,7 @@
 
                <!-- Timeline Item -->
                <div class="education-item reveal  ">
+                <div class="timeline-dot"></div>
                 <div class="pl-8 bg-white rounded-2xl shadow-xl">
                   
                   <h3 class="font-bold text-xl mb-2">
@@ -303,7 +424,7 @@
                   class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
                 >
                   <h3 class="text-white text-lg font-bold">
-                    Internship & Job Preparation
+                    Internship
                   </h3>
                 </div>
               </div>
@@ -331,29 +452,25 @@
 
       
 
-      <!-- Projects Section -->
-      <section id="projects" class="py-20 lg:py-32">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-12 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl">
-            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-              Here are a few projects I've worked on. Want to see more?
-              <a href="mailto:ranasajan509@gmail.com" class="text-indigo-600"
-                >Email me</a
-              >.
-            </p>
-          </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <!-- Project Cards will be dynamically inserted here -->
-          </div>
-        </div>
-      </section>
       
+      <!-- Projects Section -->
+        <section id="projects" class="py-12 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl font-bold mb-4">My Projects</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Here are a few projects I've worked on. Want to see more? <a href="mailto:ranasajan509@gmail.com" class="text-indigo-600">Email me</a>.</p>
+                </div>
+                <div class="grid  xl:grid-cols-3 gap-8">
+                    <!-- Project Cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
 
       <!-- Contact Section -->
-      <section id="contact" class="py-20 lg:py-32">
+      <section id="contact" class="py-10 ">
         <div class="container mx-auto px-6">
-          <div class="text-center mb-12 reveal">
+          <div class="text-center mb-10 reveal">
             <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">
               I'm currently available for freelance work. Have a project in

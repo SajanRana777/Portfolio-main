@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // --- Particle Animation on Canvas ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
@@ -9,29 +10,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Particle {
         constructor(x, y, directionX, directionY, size, color) {
-            this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
+            this.x = x;
+            this.y = y;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.size = size;
+            this.color = color;
         }
         draw() {
-            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
         }
         update() {
             if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
             if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-            this.x += this.directionX; this.y += this.directionY; this.draw();
+            this.x += this.directionX;
+            this.y += this.directionY;
+            this.draw();
         }
     }
-   
 
     function initParticles() {
         particlesArray = [];
         let numberOfParticles = (canvas.height * canvas.width) / 9000;
         for (let i = 0; i < numberOfParticles; i++) {
             let size = (Math.random() * 2) + 1;
-            let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-            let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+            let x = (Math.random() * (innerWidth - size * 2)) + size * 2;
+            let y = (Math.random() * (innerHeight - size * 2)) + size * 2;
             let directionX = (Math.random() * .4) - .2;
             let directionY = (Math.random() * .4) - .2;
-            let color = 'rgba(0, 0, 0, 0.5)'; // Dark particles
+            let color = 'rgba(0, 0, 0, 0.5)'; // Dark particles for light theme
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
         }
     }
@@ -39,19 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParticles() {
         requestAnimationFrame(animateParticles);
         ctx.clearRect(0, 0, innerWidth, innerHeight);
-        for (let i = 0; i < particlesArray.length; i++) particlesArray[i].update();
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+        }
     }
 
     initParticles();
     animateParticles();
 
     window.addEventListener('resize', () => {
-        canvas.width = innerWidth; canvas.height = innerHeight; initParticles();
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+        initParticles();
     });
 
     // --- Typing Text Animation ---
     const typingTextElement = document.getElementById('typing-text');
-    const words = ["Frontend Developer", "Web Developer"];
+    const words = ["Frontend Developer", "UI/UX Designer", "Web Developer"];
     let wordIndex = 0, charIndex = 0, isDeleting = false;
 
     function type() {
@@ -84,20 +98,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
     }, { threshold: 0.1 });
     revealElements.forEach(el => observer.observe(el));
 
     // --- Project Data and Modal Logic ---
     const projectData = {
-        1: { title: "Travel", description: "A smart travel app offering trip planning,bookings....", tech: ["Tailwindcss", "React,js", "JS", "Node.js"], liveUrl: "https://hotels-pages.vercel.app/", codeUrl: "https://github.com/SajanRana777/Hotels-pages" },
-        2: { title: "Net-Clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js","Tailwindcss", ], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "https://github.com/SajanRana777/Net-clone" },
-        3: { title: "Blogify", description: "A live Markdown blog editor with filtering...", tech: ["Tailwindcss", "React", "JavaScript"], liveUrl: "#", codeUrl: "#" },
-        // ... (rest of projects)
+        1: { title: "Hotels", description: "A real-time hotels conferencing app...", tech: ["Tailwindcss", "React", "JS", "Node.js"], liveUrl: "https://hotels-pages.vercel.app/", codeUrl: "#" },
+        2: { title: "Net-clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js", "Tailwindcss"], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "#" },
+        3: { title: "Landing-Page", description: "A live Markdown blog editor with filtering...", tech: ["Node.js", "React", "JavaScript"], liveUrl: "https://landing-page-opal-nine-95.vercel.app/", codeUrl: "#" },
+        4: { title: "PG Booking App", description: "A full-stack MERN app for PG rental and tenant management...", tech: ["MERN"], liveUrl: "#", codeUrl: "#" },
+        5: { title: "E4 Education", description: "A modular e-learning platform with user tracking...", tech: ["React", "Node.js", "MongoDB"], liveUrl: "#", codeUrl: "#" },
+        6: { title: "Crypto Chaser", description: "A crypto analytics dashboard using CoinGecko API...", tech: ["React", "CoinGecko API", "Chart.js"], liveUrl: "#", codeUrl: "#" },
+        
     };
 
-    // Create project cards
+    // Dynamically create project cards
     const projectsGrid = document.querySelector('#projects .grid');
     Object.keys(projectData).forEach(key => {
         const project = projectData[key];
@@ -106,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.dataset.projectId = key;
         card.innerHTML = `
             <div class="relative rounded-lg overflow-hidden shadow-lg">
-                <img src="https://placehold.co/600x400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500">
+                <img src="https://placehold.co/600x400/${Math.floor(Math.random() * 16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500">
                 <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
                     <h3 class="text-white text-2xl font-bold">${project.title}</h3>
                 </div>
@@ -143,25 +162,30 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         modal.classList.remove('hidden');
-        setTimeout(() => { modalContent.classList.remove('scale-95', 'opacity-0'); }, 50);
+        setTimeout(() => {
+            modalContent.classList.remove('scale-95', 'opacity-0');
+        }, 50);
         document.getElementById('close-modal').addEventListener('click', closeModal);
     }
 
     function closeModal() {
         modalContent.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
     }
 
     projectCards.forEach(card => card.addEventListener('click', () => openModal(card.dataset.projectId)));
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
 
-    // Contact Form Validation
+    // --- Contact Form Validation ---
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         formStatus.textContent = 'Sending...';
+        // Simulate form submission
         setTimeout(() => {
             formStatus.textContent = 'Message sent successfully!';
             formStatus.classList.add('text-green-600');
@@ -172,4 +196,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000);
         }, 1000);
     });
+
 });
