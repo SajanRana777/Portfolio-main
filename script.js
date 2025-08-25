@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x += this.directionX; this.y += this.directionY; this.draw();
         }
     }
+   
 
     function initParticles() {
         particlesArray = [];

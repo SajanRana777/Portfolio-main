@@ -11,7 +11,7 @@
         #hero {
             background-color: #ffffff;
         }
-        #about, #experience, #certifications, #projects, #contact {
+        #about, #experience, #certifications, #projects, #contact  {
             background-color: #f9fafb; /* Off-white for sections */
         }
         #about {
@@ -19,6 +19,9 @@
         }
         #experience {
              border-bottom: 1px solid #e5e7eb;
+        }
+        #education{
+            border-bottom: 1px solid #e5e7eb;
         }
         #certifications {
              border-bottom: 1px solid #e5e7eb;
@@ -98,6 +101,7 @@
             position: relative;
             padding-left: 30px;
             border-left: 2px solid #d1d5db;
+           
         }
         .timeline-item:last-child {
             border-left: 2px solid transparent;
@@ -112,6 +116,8 @@
             border-radius: 50%;
             border: 3px solid #f9fafb;
         }
+
+        
         
         /* Light theme header */
         #header.scrolled {
@@ -120,4 +126,5 @@
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
+
    

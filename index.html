@@ -26,31 +26,36 @@
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold gradient-text">SR</a>
+        <a href="#" class="text-2xl font-bold gradient-text text-white">SR</a>
         <nav class="hidden md:flex space-x-8">
           <a
             href="#about"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
             >About</a
           >
           <a
             href="#experience"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
             >Experience</a
           >
           <a
             href="#certifications"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
             >Certifications</a
           >
           <a
+            href="#education"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            >Education</a
+          >
+          <a
             href="#projects"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
             >Projects</a
           >
           <a
             href="#contact"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium"
+            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
             >Contact</a
           >
         </nav>
@@ -78,29 +83,33 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="relative h-screen flex items-center justify-center text-center "
+        class="relative  h-screen flex items-center justify-center  text-center  "
+         style="background-image: url(./bg2222.jpg); background-position:center; background-size:contain; "
       >
-        <canvas id="particle-canvas" class="w-0"></canvas>
-        <div class="relative z-10 px-4">
+      <canvas id="particle-canvas" class="w-0"></canvas>
+        
+        <div class="relative z-10 px-4 w-screen  ">
           <h1
-            class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter"
+            class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-left pl-6"
           >
-            <span class="gradient-text">Sajan Rana</span>
+            <span class="gradient-text text-white">Sajan Rana</span>
           </h1>
           <p
-            class="text-xl md:text-2xl lg:text-3xl font-medium text-gray-600 mb-8"
+            class="text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 text-left pl-6"
           >
             I'm a <span id="typing-text" class="font-bold text-gray-800"></span
             ><span class="typing-cursor"></span>
           </p>
 
-          
+          <div class="text-left pl-6">
           <a
             href="#projects"
-            class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
+            class="bg-pink-600 text-left w-screen hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 "
           >
             View My Work
           </a>
+          </div>
+
         </div>
       </section>
 
@@ -144,12 +153,84 @@
         </div>
       </section>
 
-      <!-- Experience Timeline Section -->
-      <section id="experience" class="py-20 lg:py-32">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-16 reveal">
-            <h2 class="text-4xl font-bold mb-4">Work Experience</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
+      <!-- Education Timeline Section -->
+
+      <section id="education" class="py-20 lg:py-30 ">
+        <div class="container mx-auto px-6 width-full ">
+          <div class="text-center mb-16 reveal  flex justify-center bg-gray-200 rounded-2xl shadow-2xl ">
+           
+            <h2 class="text-4xl font-bold mb-4 underline   ">Education</h2> 
+         
+
+          </div>
+          <div class="container-padding mx-auto grid gap-4">
+            <div class="space-y-12">
+              <!-- Timeline Item -->
+              <div class="education-item reveal    ">
+                <div class="timeline-dot"></div>
+                <div class="pl-8 bg-white  rounded-2xl shadow-2xl   " >
+                  
+                  <h3 class="font-bold text-xl mb-2 ">
+                    Master of Computer Applications (MCA)
+                  </h3>
+                  <p class="text-gray-500 py-4">
+                    Chandigarh University: Percentage 66%
+                  </p>
+                </div>
+              </div>
+
+            
+              <!-- Timeline Item -->
+              <div class="education-item reveal ">
+                <div class="timeline-dot"></div>
+                <div class="pl-8 bg-white rounded-2xl shadow-xl">
+                  
+                  <h3 class="font-bold text-xl mb-2">
+                    Bachelor of Computer Applications (BCA)
+                  </h3>
+                  <p class="text-gray-500 py-4">
+                   Govt. Degree College Jawalamukhi, Himachal Pradesh University (HPU) Percentage: 64%
+                  </p>
+                </div>
+              </div>
+
+ <!-- Timeline Item -->
+              <div class="education-item reveal ">
+                <div class="timeline-dot"></div>
+                <div class="pl-8 bg-white rounded-2xl shadow-xl">
+                  
+                  <h3 class="font-bold text-xl mb-2">
+                    Higher Secondary (12th Grade)
+                  </h3>
+                  <p class="text-gray-500 py-4">
+                    H.P. Sr. Sec. School Balardu, H.P. Board — 2018 Percentage: 54%
+                  </p>
+                </div>
+              </div>
+
+               <!-- Timeline Item -->
+               <div class="education-item reveal  ">
+                <div class="pl-8 bg-white rounded-2xl shadow-xl">
+                  
+                  <h3 class="font-bold text-xl mb-2">
+                    Matriculation (10th Grade)
+                  </h3>
+                  <p class="text-gray-500 py-4">
+                    H.P. Sr. Sec. School Balardu, H.P. Board — 2016 Percentage: 60%
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!--Experience section-->
+      <section id="experience" class="py-20 lg:py-32 width-full">
+        <div class="container mx-auto px-6 ">
+          <div class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl ">
+            <h2 class="text-4xl font-bold mb-4 " >Work Experience</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto  mb-4">
               My professional journey as a developer.
             </p>
           </div>
@@ -184,7 +265,7 @@
                   <h3 class="font-bold text-xl mb-2">
                     Web Development Trainee
                   </h3>
-                  <p class="text-gray-700 font-medium mb-3">Saral Tech</p>
+                  <p class="text-gray-700 font-medium ">Saral Tech</p>
                   <p class="text-gray-500">
                     Built Front-end features using JavaScript and React.js,
                     Node.js.
@@ -195,38 +276,25 @@
           </div>
         </div>
       </section>
+      
 
       <!-- Certifications Section -->
-      <section id="certifications" class="py-20 lg:py-32">
+      <section id="certifications" class="py-20 lg:py-25">
         <div class="container mx-auto px-6">
-          <div class="text-center mb-16 reveal">
-            <h2 class="text-4xl font-bold mb-4">Licenses & Certifications</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
+          <div class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl">
+            <h2 class="text-4xl font-bold mb-2 ">Licenses & Certifications</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto ">
               A showcase of my credentials and ongoing learning.
             </p>
           </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div class="grid md:grid-cols-3 lg:grid-cols-4  gap-8 items-center justify-center">
             <!-- NOTE: Replace the placeholder URLs with your actual certificate image URLs -->
-
-            <div class="reveal card-hover group">
+<div></div>
+            
+            <div class="reveal card-hover group h-full " style="align-items: center;">
               <div class="relative rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src="https://i.imgur.com/your-summer-analytics-image.jpg"
-                  onerror="this.onerror=null;this.src='https://placehold.co/600x420/fce7f3/831843?text=Summer+Analytics';"
-                  alt="Summer Analytics Certificate"
-                  class="w-full h-full object-cover transition-transform duration-500"
-                />
-                <div
-                  class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
-                >
-                  <h3 class="text-white text-lg font-bold">Summer Analytics</h3>
-                </div>
-              </div>
-            </div>
-            <div class="reveal card-hover group">
-              <div class="relative rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://i.imgur.com/your-job-prep-image.jpg"
+                  src="SaralTeach_page-00011.jpg"
                   onerror="this.onerror=null;this.src='https://placehold.co/600x420/dcfce7/14532d?text=Job+Preparation';"
                   alt="Job Preparation Certificate"
                   class="w-full h-full object-cover transition-transform duration-500"
@@ -243,10 +311,10 @@
             <div class="reveal card-hover group">
               <div class="relative rounded-lg overflow-hidden shadow-lg">
                 <img
-                  src=""
+                  src="./BFT12238.jpg"
                   onerror="this.onerror=null;this.src='https://placehold.co/600x420/fef9c3/713f12?text=Web+Development';"
                   alt="Web Development Certificate"
-                  class="w-full h-full object-cover transition-transform duration-500"
+                  class="w-full h-auto object-cover transition-transform duration-500"
                 />
                 <div
                   class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
@@ -261,10 +329,12 @@
         </div>
       </section>
 
+      
+
       <!-- Projects Section -->
       <section id="projects" class="py-20 lg:py-32">
         <div class="container mx-auto px-6">
-          <div class="text-center mb-12 reveal">
+          <div class="text-center mb-12 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl">
             <h2 class="text-4xl font-bold mb-4">My Projects</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">
               Here are a few projects I've worked on. Want to see more?
@@ -278,6 +348,7 @@
           </div>
         </div>
       </section>
+      
 
       <!-- Contact Section -->
       <section id="contact" class="py-20 lg:py-32">
@@ -351,7 +422,7 @@
             ><i class="fab fa-linkedin fa-2x"></i
           ></a>
         </div>
-        <p>&copy; 2024 Sajan Rana. All Rights Reserved.</p>
+        <p>&copy; 2025 Sajan Rana. All Rights Reserved.</p>
       </div>
     </footer>
 
