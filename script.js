@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Project Data and Modal Logic ---
     const projectData = {
         1: { title: "Travel", description: "A smart travel app offering trip planning,bookings....", tech: ["Tailwindcss", "React,js", "JS", "Node.js"], liveUrl: "https://hotels-pages.vercel.app/", codeUrl: "https://github.com/SajanRana777/Hotels-pages" },
-        2: { title: "Social2Media", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js","Tailwindcss", ], liveUrl: "#", codeUrl: "#" },
+        2: { title: "Net-Clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js","Tailwindcss", ], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "https://github.com/SajanRana777/Net-clone" },
         3: { title: "Blogify", description: "A live Markdown blog editor with filtering...", tech: ["Tailwindcss", "React", "JavaScript"], liveUrl: "#", codeUrl: "#" },
         // ... (rest of projects)
     };
