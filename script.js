@@ -117,22 +117,26 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Dynamically create project cards
-    const projectsGrid = document.querySelector('#projects .grid');
-    Object.keys(projectData).forEach(key => {
-        const project = projectData[key];
-        const card = document.createElement('div');
-        card.className = 'project-card card-hover reveal cursor-pointer group';
-        card.dataset.projectId = key;
-        card.innerHTML = `
-            <div class="relative rounded-lg overflow-hidden shadow-lg">
-                <img src="https://placehold.co/600x400/${Math.floor(Math.random() * 16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500">
-                <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
-                    <h3 class="text-white text-2xl font-bold">${project.title}</h3>
-                </div>
+    const projectsGrid = document.getElementById('projects-grid');
+
+// only take 6 projects (2 rows × 3 cols)
+Object.keys(projectData).slice(0, 6).forEach(key => {
+    const project = projectData[key];
+    const card = document.createElement('div');
+    card.className = 'project-card card-hover reveal cursor-pointer group h-full flex flex-col';
+    card.dataset.projectId = key;
+    card.innerHTML = `
+        <div class="relative rounded-lg overflow-hidden shadow-lg flex-1">
+            <img src="https://placehold.co/600x400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" 
+                 alt="${project.title}" 
+                 class="w-full h-full object-cover transition-transform duration-500">
+            <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
+                <h3 class="text-white text-2xl font-bold">${project.title}</h3>
             </div>
-        `;
-        projectsGrid.appendChild(card);
-    });
+        </div>
+    `;
+    projectsGrid.appendChild(card);
+});
 
     const projectCards = document.querySelectorAll('.project-card');
     const modal = document.getElementById('project-modal');
