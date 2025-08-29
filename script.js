@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         2: { title: "Net-clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js", "Tailwindcss"], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "#" },
         3: { title: "Landing-Page", description: "A live Markdown blog editor with filtering...", tech: ["Node.js", "React", "JavaScript"], liveUrl: "https://landing-page-opal-nine-95.vercel.app/", codeUrl: "#" },
         4: { title: "Tech-Page", description: "A live Markdown blog editor with filtering...", tech:  ["Node.js", "React", "JavaScript"] , liveUrl: "https://tech-page-theta.vercel.app/", codeUrl: "#" },
-        5: { title: "E4 Education", description: "A modular e-learning platform with user tracking...", tech: ["React", "Node.js", "MongoDB"], liveUrl: "#", codeUrl: "#" },
-        6: { title: "Crypto Chaser", description: "A crypto analytics dashboard using CoinGecko API...", tech: ["React", "CoinGecko API", "Chart.js"], liveUrl: "#", codeUrl: "#" },
+        5: { title: "EDigital Design", description: "A modular e-learning platform with user...", tech: ["React", "Node.js", ""], liveUrl: "https://project-assign-3vq6.vercel.app/", codeUrl: "#" },
+        
         
     };
 
