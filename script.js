@@ -183,22 +183,31 @@ Object.keys(projectData).slice(0, 6).forEach(key => {
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
 
-    // --- Contact Form Validation ---
-    const form = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        formStatus.textContent = 'Sending...';
-        // Simulate form submission
-        setTimeout(() => {
-            formStatus.textContent = 'Message sent successfully!';
-            formStatus.classList.add('text-green-600');
-            form.reset();
-            setTimeout(() => {
-                formStatus.textContent = '';
-                formStatus.classList.remove('text-green-600');
-            }, 5000);
-        }, 1000);
-    });
+    
+   // --- Contact Form Validation ---
+const form = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  formStatus.textContent = 'Sending...';
+  formStatus.classList.remove('text-green-600', 'text-red-600');
+  formStatus.classList.add('text-blue-600');
+
+  // Simulate form submission
+  setTimeout(() => {
+    formStatus.textContent = 'Message sent successfully!';
+    formStatus.classList.remove('text-blue-600');
+    formStatus.classList.add('text-green-600');
+
+    form.reset();
+
+    setTimeout(() => {
+      formStatus.textContent = '';
+      formStatus.classList.remove('text-green-600');
+    }, 5000);
+  }, 1000);
+});
+
 
 });

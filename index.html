@@ -1,213 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sajan Rana | Frontend Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<script src="script.js" ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <script src="script.js" defer></script>
     <style>
-        /* Custom styles for the page */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            color: #1f2937; /* Dark gray text */
-            overflow-x: hidden;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6;
+        color: #1f2937;
+        overflow-x: hidden;
+      }
 
-        /* Section Backgrounds - Light Theme */
-        #hero {
-            background-color: #ffffff;
-        }
-        #about, #experience, #certifications, #projects, #contact {
-            background-color: #f9fafb; /* Off-white for sections */
-        }
-        #about {
-            border-bottom: 1px solid #e5e7eb;
-        }
-        #experience {
-             border-bottom: 1px solid #e5e7eb;
-        }
-        #certifications {
-             border-bottom: 1px solid #e5e7eb;
-        }
-        #projects {
-             border-bottom: 1px solid #e5e7eb;
-        }
-         
-        /* Canvas for particle animation */
-        #particle-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+      #hero {
+        background-color: #ffffff;
+      }
+      #about,
+      #experience,
+      #certifications,
+      #projects,
+      #contact {
+        background-color: #f9fafb;
+      }
 
-        /* Custom gradient text */
-        .gradient-text {
-            background: linear-gradient(90deg, #ececee, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        /* Styling for the animated typing cursor */
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.2em;
-            background-color: #ec4899;
-            animation: blink 0.7s infinite;
-            margin-left: 4px;
-            vertical-align: middle;
-        }
+      .gradient-text {
+        background: linear-gradient(90deg, #ececee, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+      .typing-cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.2em;
+        background-color: #ec4899;
+        animation: blink 0.7s infinite;
+        margin-left: 4px;
+        vertical-align: middle;
+      }
 
-        /* Scroll-triggered animation classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
         }
+        50% {
+          opacity: 0;
+        }
+      }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Card hover effect */
-        .card-hover:hover img {
-            transform: scale(1.05);
-        }
-        .card-hover:hover .card-overlay {
-            opacity: 1;
-        }
-
-        /* Modal styles with glass effect - Light Theme */
-        .modal-backdrop {
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        .modal-content {
-            background-color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: #1f2937;
-        }
-
-         /* Timeline Styles - Light Theme */
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid #d1d5db;
-        }
-        .timeline-item:last-child {
-            border-left: 2px solid transparent;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -9px;
-            top: 0;
-            height: 16px;
-            width: 16px;
-            background-color: #4f46e5;
-            border-radius: 50%;
-            border: 3px solid #f9fafb;
-        }
-        
-        /* Light theme header */
-        #header.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
+      #header.scrolled {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
     </style>
-
-
-
   </head>
   <body class="antialiased">
     <!-- Header -->
     <header
       id="header"
-      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
     >
       <div
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold gradient-text text-white ">SR</a>
+        <!-- Logo -->
+        <a href="#" class="text-2xl font-bold gradient-text text-white">SR</a>
+
+        <!-- Desktop Nav -->
         <nav class="hidden md:flex space-x-8">
-          <a
-            href="#about"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+          <a href="#about" class="hover:text-indigo-600 font-medium text-white"
             >About</a
           >
           <a
             href="#experience"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            class="hover:text-indigo-600 font-medium text-white"
             >Experience</a
           >
           <a
             href="#certifications"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            class="hover:text-indigo-600 font-medium text-white"
             >Certifications</a
           >
           <a
             href="#education"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            class="hover:text-indigo-600 font-medium text-white"
             >Education</a
           >
           <a
             href="#projects"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            class="hover:text-indigo-600 font-medium text-white"
             >Projects</a
           >
           <a
             href="#contact"
-            class="text-gray-600 hover:text-indigo-600 transition font-medium text-white"
+            class="hover:text-indigo-600 font-medium text-white"
             >Contact</a
           >
         </nav>
-        <div class="flex  space-x-6">
-        <a
+
+        <!-- Desktop Buttons -->
+        <div class="hidden md:flex space-x-6">
+          <a
             href="Sajan_Rana_7777 (3).pdf"
             download
-            class="hidden md:block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-2 rounded-lg transition items-center"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg"
           >
             Download Resume
           </a>
-
-        <a
-          href="#contact"
-          class="hidden md:block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition"
-          >Hire Me</a
-        >
+          <a
+            href="#contact"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg"
+          >
+            Hire Me
+          </a>
         </div>
 
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden flex-col space-y-4 bg-white shadow-lg rounded-lg p-6 absolute top-full right-6 left-6 mt-2 md:hidden"
+      >
+        <a href="#about" class="block text-gray-700">About</a>
+        <a href="#experience" class="block text-gray-700">Experience</a>
+        <a href="#projects" class="block text-gray-700">Projects</a>
+        <a href="#contact" class="block text-gray-700">Contact</a>
       </div>
     </header>
 
     <main>
-      
       <!-- Hero Section -->
       <section
         id="hero"
-        class="relative  h-screen flex items-center justify-center  text-center  "
-         style="background-image: url(./bg2222.jpg); background-position:center; background-size:contain; "
+        class="relative h-screen flex items-center justify-center text-center"
+        style="
+          background-image: url(./bg2222.jpg);
+          background-position: center;
+          background-size: contain;
+        "
       >
-      <canvas id="particle-canvas" class="w-0"></canvas>
-        
-        <div class="relative z-10 px-4 w-screen  ">
+        <canvas id="particle-canvas" class="w-0"></canvas>
+
+        <div class="relative z-10 px-4 w-screen">
           <h1
             class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-left pl-6"
           >
@@ -221,31 +176,36 @@
           </p>
 
           <div class="text-left pl-6">
-          <a
-            href="#projects"
-            class="bg-pink-600 text-left w-screen hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 "
-          >
-            View My Work
-          </a>
+            <a
+              href="#projects"
+              class="bg-pink-600 text-left hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
+            >
+              View My Work
+            </a>
           </div>
-
         </div>
       </section>
 
       <!-- About Section -->
-      <section id="education" class="py-6 lg:py-30 px-12 h-full width-full ">
-        <div class="container mx-auto px-6 width-full ">
-           <div class="text-center  reveal  flex justify-center bg-gray-200 rounded-2xl shadow-2xl  ">
-                       <div class="reveal">
+      <section id="about" class="py-10 px-4 sm:px-8 md:px-12">
+        <div class="container mx-auto px-6 width-full">
+          <div
+            class="text-center reveal flex justify-center bg-gray-200 rounded-2xl shadow-2xl"
+          >
+            <div class="reveal">
               <h2 class="text-4xl font-bold mb-6 mt-6">About Me</h2>
-              <p class="text-gray-600 mb-16  text-lg font-bold text-center justify-center">
+              <p
+                class="text-gray-600 mb-16 text-lg font-bold text-center justify-center"
+              >
                 I'm a passionate frontend developer specializing in building
                 beautiful, interactive, and high-performance web applications.
                 With a strong eye for design and a deep understanding of modern
                 web technologies, I bring ideas to life from concept to
                 deployment.
               </p>
-              <div class="flex flex-wrap gap-3 text-center justify-center mb-20">
+              <div
+                class="flex flex-wrap gap-3 text-center justify-center mb-20"
+              >
                 <span
                   class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200"
                   >HTML</span
@@ -275,22 +235,20 @@
 
       <!-- Education Timeline Section -->
 
-      <section id="education" class="py-20 lg:py-30 ">
-        <div class="container mx-auto px-6 width-full ">
-          <div class="text-center mb-16 reveal  flex justify-center bg-gray-200 rounded-2xl shadow-2xl ">
-           
-            <h2 class="text-4xl font-bold mb-4 underline mt-4   ">Education</h2> 
-         
-
+      <section id="education" class="py-10 px-4 sm:px-8 md:px-12">
+        <div class="container mx-auto px-6 width-full">
+          <div
+            class="text-center mb-16 reveal flex justify-center bg-gray-200 rounded-2xl shadow-2xl"
+          >
+            <h2 class="text-4xl font-bold mb-4 underline mt-4">Education</h2>
           </div>
           <div class="container-padding mx-auto grid gap-4">
             <div class="space-y-12">
               <!-- Timeline Item -->
-              <div class="education-item reveal    ">
+              <div class="education-item reveal">
                 <div class="timeline-dot"></div>
-                <div class="pl-8 bg-white  rounded-2xl shadow-2xl   " >
-                  
-                  <h3 class="font-bold text-xl mb-2 ">
+                <div class="pl-8 bg-white rounded-2xl shadow-2xl">
+                  <h3 class="font-bold text-xl mb-2">
                     Master of Computer Applications (MCA)
                   </h3>
                   <p class="text-gray-500 py-4">
@@ -299,45 +257,44 @@
                 </div>
               </div>
 
-            
               <!-- Timeline Item -->
-              <div class="education-item reveal ">
+              <div class="education-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="pl-8 bg-white rounded-2xl shadow-xl">
-                  
                   <h3 class="font-bold text-xl mb-2">
                     Bachelor of Computer Applications (BCA)
                   </h3>
                   <p class="text-gray-500 py-4">
-                   Govt. Degree College Jawalamukhi, Himachal Pradesh University (HPU) Percentage: 64%
+                    Govt. Degree College Jawalamukhi, Himachal Pradesh
+                    University (HPU) Percentage: 64%
                   </p>
                 </div>
               </div>
 
- <!-- Timeline Item -->
-              <div class="education-item reveal ">
+              <!-- Timeline Item -->
+              <div class="education-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="pl-8 bg-white rounded-2xl shadow-xl">
-                  
                   <h3 class="font-bold text-xl mb-2">
                     Higher Secondary (12th Grade)
                   </h3>
                   <p class="text-gray-500 py-4">
-                    H.P. Sr. Sec. School Balardu, H.P. Board — 2018 Percentage: 54%
+                    H.P. Sr. Sec. School Balardu, H.P. Board — 2018 Percentage:
+                    54%
                   </p>
                 </div>
               </div>
 
-               <!-- Timeline Item -->
-               <div class="education-item reveal  ">
+              <!-- Timeline Item -->
+              <div class="education-item reveal">
                 <div class="timeline-dot"></div>
                 <div class="pl-8 bg-white rounded-2xl shadow-xl">
-                  
                   <h3 class="font-bold text-xl mb-2">
                     Matriculation (10th Grade)
                   </h3>
                   <p class="text-gray-500 py-4">
-                    H.P. Sr. Sec. School Balardu, H.P. Board — 2016 Percentage: 60%
+                    H.P. Sr. Sec. School Balardu, H.P. Board — 2016 Percentage:
+                    60%
                   </p>
                 </div>
               </div>
@@ -346,12 +303,14 @@
         </div>
       </section>
 
-<!--Experience section-->
-      <section id="experience" class="py-20 lg:py-32 width-full">
-        <div class="container mx-auto px-6 ">
-          <div class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl ">
-            <h2 class="text-4xl font-bold mb-4 " >Work Experience</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto  mb-4">
+      <!--Experience section-->
+      <section id="experience" class="py-20 lg:py-32">
+        <div class="container mx-auto px-6">
+          <div
+            class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl"
+          >
+            <h2 class="text-4xl font-bold mb-4">Work Experience</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-4">
               My professional journey as a developer.
             </p>
           </div>
@@ -375,7 +334,6 @@
                 </div>
               </div>
 
-            
               <!-- Timeline Item -->
               <div class="timeline-item reveal">
                 <div class="timeline-dot"></div>
@@ -386,7 +344,7 @@
                   <h3 class="font-bold text-xl mb-2">
                     Web Development Trainee
                   </h3>
-                  <p class="text-gray-700 font-medium ">Saral Tech</p>
+                  <p class="text-gray-700 font-medium">Saral Tech</p>
                   <p class="text-gray-500">
                     Built Front-end features using JavaScript and React.js,
                     Node.js.
@@ -397,22 +355,28 @@
           </div>
         </div>
       </section>
-      
 
       <!-- Certifications Section -->
-      <section id="certifications" class="py-20 lg:py-25">
+       <section id="certifications" class="py-20 lg:py-25">
         <div class="container mx-auto px-6">
-          <div class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl">
-            <h2 class="text-4xl font-bold mb-2 ">Licenses & Certifications</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto ">
+          <div
+            class="text-center mb-16 reveal justify-center bg-gray-200 rounded-2xl shadow-2xl"
+          >
+            <h2 class="text-4xl font-bold mb-2">Licenses & Certifications</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
               A showcase of my credentials and ongoing learning.
             </p>
           </div>
-          <div class="grid md:grid-cols-3 lg:grid-cols-4  gap-8 items-center justify-center">
+          <div
+            class="grid md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center"
+          >
             <!-- NOTE: Replace the placeholder URLs with your actual certificate image URLs -->
-<div></div>
-            
-            <div class="reveal card-hover group h-full " style="align-items: center;">
+            <div></div>
+
+            <div
+              class="reveal card-hover group h-full"
+              style="align-items: center"
+            >
               <div class="relative rounded-lg overflow-hidden shadow-lg">
                 <img
                   src="SaralTeach_page-00011.jpg"
@@ -423,9 +387,7 @@
                 <div
                   class="card-overlay absolute inset-0 bg-black bg-opacity-60 flex items-end p-4 opacity-0 transition-opacity duration-500"
                 >
-                  <h3 class="text-white text-lg font-bold">
-                    Internship
-                  </h3>
+                  <h3 class="text-white text-lg font-bold">Internship</h3>
                 </div>
               </div>
             </div>
@@ -450,82 +412,87 @@
         </div>
       </section>
 
-      
-<!-- Projects Section -->
+      <!-- Projects Section -->
 
-<section id="projects" class="py-16 h-screen">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12 reveal">
-                    <h2 class="text-4xl font-bold mb-4">My Projects</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Here are a few projects I've worked on. Want to see more? <a href="mailto:ranasajan509@gmail.com" class="text-indigo-600">Email me</a>.</p>
-                </div> 
-    <div id="projects-grid" 
-         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-     <!-- Project Cards will be dynamically inserted here -->
-    </div>
-  </div>
-</section>
-
-
-      
-      
-     
-
-
-      <!-- Contact Section -->
-      <section id="contact" class="py-10 ">
-        <div class="container mx-auto px-6">
-          <div class="text-center mb-10 reveal">
-            <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+      <section id="projects" class="py-16 h-screen">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-12 reveal">
+            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">
-              I'm currently available for freelance work. Have a project in
-              mind? Let's talk.
+              Here are a few projects I've worked on. Want to see more?
+              <a href="mailto:ranasajan509@gmail.com" class="text-indigo-600"
+                >Email me</a
+              >.
             </p>
           </div>
-          <form id="contact-form" class="max-w-xl mx-auto reveal">
-            <div class="mb-4">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your Name"
-                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Your Email"
-                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-                required
-              />
-            </div>
-            <div class="mb-6">
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Your Message"
-                class="w-full bg-white border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-                required
-              ></textarea>
-            </div>
-            <div class="text-center">
-              <button
-                type="submit"
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
-              >
-                Send Message
-              </button>
-            </div>
+          <div
+            id="projects-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
+          >
+            <!-- Project Cards will be dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+   <!-- ✅ Correct Contact Section -->
+      <section id="contact" class="w-full bg-white py-12 px-4">
+        <div class="max-w-3xl mx-auto flex flex-col gap-6">
+          <div
+            class="bg-yellow-600 text-white rounded-2xl p-6 text-center shadow-md"
+          >
+            <h2 class="text-2xl md:text-3xl font-bold">Get In Touch</h2>
+            <p class="text-lg md:text-xl font-semibold mt-2">
+              Let's build something great together
+            </p>
+          </div>
+
+          <form
+            id="contact-form"
+            class="bg-gray-100 rounded-2xl p-6 shadow-md flex flex-col gap-4"
+          >
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            />
+            <textarea
+              rows="4"
+              placeholder="Your Message"
+              class="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              class="bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+            >
+              Send Message
+            </button>
           </form>
           <p id="form-status" class="text-center mt-4"></p>
         </div>
       </section>
     </main>
+
+    <!-- Project Modal -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden"
+    >
+      <div
+        id="modal-content"
+        class="modal-content rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all duration-300 scale-95 opacity-0"
+      >
+        <!-- Content injected by JavaScript -->
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white py-8">
@@ -538,7 +505,7 @@
             ><i class="fab fa-github fa-2x"></i
           ></a>
           <a
-            href="www.linkedin.com/in/sajan-rana-a97b90253"
+            href="https://www.linkedin.com/in/sajan-rana-a97b90253"
             target="_blank"
             class="text-gray-400 hover:text-indigo-600 transition"
             ><i class="fab fa-linkedin fa-2x"></i
@@ -547,20 +514,5 @@
         <p>&copy; 2025 Sajan Rana. All Rights Reserved.</p>
       </div>
     </footer>
-
-    <!-- Project Modal -->
-    <div
-      id="project-modal"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden"
-    >
-      <div
-        id="modal-content"
-        class="modal-content rounded-2xl shadow-2xl w-full max-w-4xl transform transition-all duration-300 scale-95 opacity-0"
-      >
-        <!-- Content will be injected by JavaScript -->
-      </div>
-    </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
