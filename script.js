@@ -113,18 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const projectsGrid = document.getElementById('projects-grid');
-  Object.keys(projectData).slice(0, 5).forEach(key => {
+  Object.keys(projectData).slice(0, 6).forEach(key => {
     const project = projectData[key];
     const card = document.createElement('div');
-    card.className = 'project-card card-hover reveal cursor-pointer group h-max flex flex-col';
+    card.className = 'project-card card-hover reveal cursor-pointer group h-full flex flex-col';
     card.dataset.projectId = key;
     card.innerHTML = `
       <div class="relative rounded-lg overflow-hidden shadow-lg flex-1">
-        <img src="https://placehold.co/400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" 
+        <img src="https://placehold.co/600x400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" 
              alt="${project.title}" 
              class="w-full h-full object-cover transition-transform duration-500">
         <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
-          <h3 class="text-white text-2xl font-bold">${project.title}</h3>
+          <h3 class="text-black text-2xl font-bold">${project.title}</h3>
         </div>
       </div>
     `;
@@ -142,15 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
     modalContent.innerHTML = `
       <div class="p-8 relative">
         <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <h2 class="text-4xl font-bold mb-4 gradient-text">${data.title}</h2>
+        <h2 class="text-4xl font-bold mb-4 gradient-text ">${data.title}</h2>
         <p class="text-gray-600 mb-6 text-lg">${data.description}</p>
         <div class="flex flex-wrap gap-3 mb-8">
           ${data.tech.map(t => `<span class="bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">${t}</span>`).join('')}
         </div>
         <div class="flex space-x-4">
-          <a href="${data.liveUrl}" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Live</a>
+          <a href="${data.liveUrl}" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-Red font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Live</a>
           <a href="${data.codeUrl}" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Code</a>
         </div>
       </div>
@@ -181,34 +181,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Contact Form Validation ---
-// --- Contact Form Validation ---
-const form = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
 
-if (form) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      formStatus.textContent = 'Sending...';
+      formStatus.className = 'text-blue-600 text-center mt-4';
 
-    // Show sending state
-    formStatus.textContent = 'Sending...';
-    formStatus.className =
-      'animate-pulse text-blue-600 text-sm sm:text-base md:text-lg text-center mt-4';
-
-    // Simulate async (replace with real API call later)
-    setTimeout(() => {
-      formStatus.textContent = '✅ Message sent successfully!';
-      formStatus.className =
-        'animate-fade-in text-green-600 font-semibold text-sm sm:text-base md:text-lg text-center mt-4';
-
-      form.reset();
-
-      // Hide after 5s
+      // Simulate async
       setTimeout(() => {
-        formStatus.textContent = '';
-        formStatus.className = '';
-      }, 5000);
-    }, 1200);
-  });
-}
+        formStatus.textContent = 'Message sent successfully!';
+        formStatus.className = 'text-green-600 text-center mt-4';
+        form.reset();
 
+        setTimeout(() => (formStatus.textContent = ''), 5000);
+      }, 1000);
+    });
+  }
 });
