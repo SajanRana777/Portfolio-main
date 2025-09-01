@@ -1,213 +1,203 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Particle Animation on Canvas ---
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-    // --- Particle Animation on Canvas ---
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
+  let particlesArray = [];
+
+  class Particle {
+    constructor(x, y, directionX, directionY, size, color) {
+      this.x = x;
+      this.y = y;
+      this.directionX = directionX;
+      this.directionY = directionY;
+      this.size = size;
+      this.color = color;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+    update() {
+      if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+      if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+      this.x += this.directionX;
+      this.y += this.directionY;
+      this.draw();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.height * canvas.width) / 9000;
+    for (let i = 0; i < numberOfParticles; i++) {
+      let size = Math.random() * 2 + 1;
+      let x = Math.random() * (canvas.width - size * 2) + size * 2;
+      let y = Math.random() * (canvas.height - size * 2) + size * 2;
+      let directionX = Math.random() * 0.4 - 0.2;
+      let directionY = Math.random() * 0.4 - 0.2;
+      let color = 'rgba(0,0,0,0.5)';
+      particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+    }
+  }
+
+  function animateParticles() {
+    requestAnimationFrame(animateParticles);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => p.update());
+  }
+
+  initParticles();
+  animateParticles();
+
+  window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    let particlesArray;
-
-    class Particle {
-        constructor(x, y, directionX, directionY, size, color) {
-            this.x = x;
-            this.y = y;
-            this.directionX = directionX;
-            this.directionY = directionY;
-            this.size = size;
-            this.color = color;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-        update() {
-            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-            this.x += this.directionX;
-            this.y += this.directionY;
-            this.draw();
-        }
-    }
-
-    function initParticles() {
-        particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 9000;
-        for (let i = 0; i < numberOfParticles; i++) {
-            let size = (Math.random() * 2) + 1;
-            let x = (Math.random() * (innerWidth - size * 2)) + size * 2;
-            let y = (Math.random() * (innerHeight - size * 2)) + size * 2;
-            let directionX = (Math.random() * .4) - .2;
-            let directionY = (Math.random() * .4) - .2;
-            let color = 'rgba(0, 0, 0, 0.5)'; // Dark particles for light theme
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-        }
-    }
-
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
-    }
-
     initParticles();
-    animateParticles();
+  });
 
-    window.addEventListener('resize', () => {
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
-        initParticles();
-    });
+  // --- Typing Text Animation ---
+  const typingTextElement = document.getElementById('typing-text');
+  const words = ["Frontend Developer", "UI/UX Designer", "Web Developer"];
+  let wordIndex = 0, charIndex = 0, isDeleting = false;
 
-    // --- Typing Text Animation ---
-    const typingTextElement = document.getElementById('typing-text');
-    const words = ["Frontend Developer", "UI/UX Designer", "Web Developer"];
-    let wordIndex = 0, charIndex = 0, isDeleting = false;
-
-    function type() {
-        const currentWord = words[wordIndex];
-        if (isDeleting) {
-            typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentWord.length) {
-            setTimeout(() => isDeleting = true, 2000);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-        }
-        setTimeout(type, isDeleting ? 100 : 200);
+  function type() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
     }
-    type();
 
-    // --- Header Scroll Effect ---
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (!isDeleting && charIndex === currentWord.length) {
+      setTimeout(() => (isDeleting = true), 2000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+    setTimeout(type, isDeleting ? 100 : 200);
+  }
+  type();
 
-    // --- Scroll Reveal Animation ---
-    const revealElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    revealElements.forEach(el => observer.observe(el));
+  // --- Header Scroll Effect ---
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-    // --- Project Data and Modal Logic ---
-    const projectData = {
-        1: { title: "Hotels", description: "A real-time hotels conferencing app...", tech: ["Tailwindcss", "React", "JS", "Node.js"], liveUrl: "https://hotels-pages.vercel.app/", codeUrl: "#" },
-        2: { title: "Net-clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js", "Tailwindcss"], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "#" },
-        3: { title: "Landing-Page", description: "A live Markdown blog editor with filtering...", tech: ["Node.js", "React", "JavaScript"], liveUrl: "https://landing-page-opal-nine-95.vercel.app/", codeUrl: "#" },
-        4: { title: "Tech-Page", description: "A live Markdown blog editor with filtering...", tech:  ["Node.js", "React", "JavaScript"] , liveUrl: "https://tech-page-theta.vercel.app/", codeUrl: "#" },
-        5: { title: "EDigital Design", description: "A modular e-learning platform with user...", tech: ["React", "Node.js", ""], liveUrl: "https://project-assign-3vq6.vercel.app/", codeUrl: "#" },
-        
-        
-    };
+  // --- Scroll Reveal Animation ---
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    },
+    { threshold: 0.1 }
+  );
+  revealElements.forEach(el => observer.observe(el));
 
-    // Dynamically create project cards
-    const projectsGrid = document.getElementById('projects-grid');
+  // --- Project Data and Modal Logic ---
+  const projectData = {
+    1: { title: "Hotels", description: "A real-time hotels conferencing app...", tech: ["Tailwindcss", "React", "JS", "Node.js"], liveUrl: "https://hotels-pages.vercel.app/", codeUrl: "#" },
+    2: { title: "Net-clone", description: "A live social media platform with React and Redux...", tech: ["React", "Redux", "Node.js", "Tailwindcss"], liveUrl: "https://net-clone-one.vercel.app/", codeUrl: "#" },
+    3: { title: "Landing-Page", description: "A live Markdown blog editor with filtering...", tech: ["Node.js", "React", "JavaScript"], liveUrl: "https://landing-page-opal-nine-95.vercel.app/", codeUrl: "#" },
+    4: { title: "Tech-Page", description: "A live Markdown blog editor with filtering...", tech: ["Node.js", "React", "JavaScript"], liveUrl: "https://tech-page-theta.vercel.app/", codeUrl: "#" },
+    5: { title: "EDigital Design", description: "A modular e-learning platform with user...", tech: ["React", "Node.js"], liveUrl: "https://project-assign-3vq6.vercel.app/", codeUrl: "#" },
+  };
 
-// only take 6 projects (2 rows × 3 cols)
-Object.keys(projectData).slice(0, 6).forEach(key => {
+  const projectsGrid = document.getElementById('projects-grid');
+  Object.keys(projectData).slice(0, 6).forEach(key => {
     const project = projectData[key];
     const card = document.createElement('div');
     card.className = 'project-card card-hover reveal cursor-pointer group h-full flex flex-col';
     card.dataset.projectId = key;
     card.innerHTML = `
-        <div class="relative rounded-lg overflow-hidden shadow-lg flex-1">
-            <img src="https://placehold.co/600x400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" 
-                 alt="${project.title}" 
-                 class="w-full h-full object-cover transition-transform duration-500">
-            <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
-                <h3 class="text-white text-2xl font-bold">${project.title}</h3>
-            </div>
+      <div class="relative rounded-lg overflow-hidden shadow-lg flex-1">
+        <img src="https://placehold.co/600x400/${Math.floor(Math.random()*16777215).toString(16)}/ffffff?text=${project.title.replace(' ', '+')}" 
+             alt="${project.title}" 
+             class="w-full h-full object-cover transition-transform duration-500">
+        <div class="card-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 transition-opacity duration-500">
+          <h3 class="text-white text-2xl font-bold">${project.title}</h3>
         </div>
+      </div>
     `;
     projectsGrid.appendChild(card);
-});
+  });
 
-    const projectCards = document.querySelectorAll('.project-card');
-    const modal = document.getElementById('project-modal');
-    const modalContent = document.getElementById('modal-content');
+  const projectCards = document.querySelectorAll('.project-card');
+  const modal = document.getElementById('project-modal');
+  const modalContent = document.getElementById('modal-content');
 
-    function openModal(projectId) {
-        const data = projectData[projectId];
-        if (!data) return;
+  function openModal(projectId) {
+    const data = projectData[projectId];
+    if (!data) return;
 
-        modalContent.innerHTML = `
-            <div class="p-8 relative">
-              <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              </button>
-              <h2 class="text-4xl font-bold mb-4 gradient-text">${data.title}</h2>
-              <p class="text-gray-600 mb-6 text-lg">${data.description}</p>
-              <div class="flex flex-wrap gap-3 mb-8">
-                ${data.tech.map(t => `
-                  <span class="bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">${t}</span>
-                `).join('')}
-              </div>
-              <div class="flex space-x-4">
-                <a href="${data.liveUrl}" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Live</a>
-                <a href="${data.codeUrl}" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Code</a>
-              </div>
-            </div>
-        `;
+    modalContent.innerHTML = `
+      <div class="p-8 relative">
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <h2 class="text-4xl font-bold mb-4 gradient-text">${data.title}</h2>
+        <p class="text-gray-600 mb-6 text-lg">${data.description}</p>
+        <div class="flex flex-wrap gap-3 mb-8">
+          ${data.tech.map(t => `<span class="bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">${t}</span>`).join('')}
+        </div>
+        <div class="flex space-x-4">
+          <a href="${data.liveUrl}" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Live</a>
+          <a href="${data.codeUrl}" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-full text-lg transition-transform transform hover:scale-105">View Code</a>
+        </div>
+      </div>
+    `;
 
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-            modalContent.classList.remove('scale-95', 'opacity-0');
-        }, 50);
-        document.getElementById('close-modal').addEventListener('click', closeModal);
-    }
+    modal.classList.remove('hidden');
+    setTimeout(() => modalContent.classList.remove('scale-95', 'opacity-0'), 50);
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+  }
 
-    function closeModal() {
-        modalContent.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => {
-            modal.classList.add('hidden');
-        }, 300);
-    }
+  function closeModal() {
+    modalContent.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => modal.classList.add('hidden'), 300);
+  }
 
-    projectCards.forEach(card => card.addEventListener('click', () => openModal(card.dataset.projectId)));
-    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+  projectCards.forEach(card => card.addEventListener('click', () => openModal(card.dataset.projectId)));
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
 
-    
-   // --- Contact Form Validation ---
-const form = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
+  // --- Mobile menu toggle ---
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  }
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  formStatus.textContent = 'Sending...';
-  formStatus.classList.remove('text-green-600', 'text-red-600');
-  formStatus.classList.add('text-blue-600');
+  // --- Contact Form Validation ---
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
 
-  // Simulate form submission
-  setTimeout(() => {
-    formStatus.textContent = 'Message sent successfully!';
-    formStatus.classList.remove('text-blue-600');
-    formStatus.classList.add('text-green-600');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      formStatus.textContent = 'Sending...';
+      formStatus.className = 'text-blue-600 text-center mt-4';
 
-    form.reset();
+      // Simulate async
+      setTimeout(() => {
+        formStatus.textContent = 'Message sent successfully!';
+        formStatus.className = 'text-green-600 text-center mt-4';
+        form.reset();
 
-    setTimeout(() => {
-      formStatus.textContent = '';
-      formStatus.classList.remove('text-green-600');
-    }, 5000);
-  }, 1000);
-});
-
-
+        setTimeout(() => (formStatus.textContent = ''), 5000);
+      }, 1000);
+    });
+  }
 });
