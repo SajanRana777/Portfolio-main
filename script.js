@@ -139,46 +139,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = projectData[projectId];
     if (!data) return;
 
-   modalContent.innerHTML = `
-  <div class="p-6 sm:p-8 relative bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100 
+  modalContent.innerHTML = `
+  <div class="p-6 sm:p-8 relative 
+              bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+              text-white dark:from-gray-800 dark:via-gray-900 dark:to-black 
               rounded-2xl shadow-xl transition-colors duration-300 
-              w-full max-w-2xl mx-auto">
+              w-full max-w-2xl mx-auto overflow-y-auto max-h-[90vh]">
               
     <button id="close-modal" 
-      class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition">
+      class="absolute top-4 right-4 text-gray-200 hover:text-white dark:hover:text-gray-300 transition">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
     
-    <h2 class="text-2xl sm:text-4xl font-bold mb-4 gradient-text">${data.title}</h2>
+    <h2 class="text-2xl sm:text-4xl font-bold mb-4">${data.title}</h2>
     
-    <p class="text-gray-700 dark:text-gray-300 mb-6 text-base sm:text-lg">
+    <p class="text-white/90 dark:text-gray-300 mb-6 text-base sm:text-lg">
       ${data.description}
     </p>
     
     <div class="flex flex-wrap gap-3 mb-8">
       ${data.tech.map(t => `
-        <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 
-                     text-sm font-medium px-4 py-2 rounded-full">
+        <span class="bg-white/20 dark:bg-gray-700 text-white dark:text-gray-200 
+                     text-sm font-medium px-4 py-2 rounded-full backdrop-blur-sm">
           ${t}
         </span>`).join('')}
     </div>
     
     <div class="flex flex-col sm:flex-row sm:space-x-4 gap-4 sm:gap-0">
       <a href="${data.liveUrl}" target="_blank" 
-         class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 
-                rounded-full text-lg text-center transition-transform transform hover:scale-105">
+         class="bg-white text-indigo-700 hover:bg-gray-100 
+                font-bold py-3 px-6 rounded-full text-lg text-center 
+                transition-transform transform hover:scale-105">
          View Live
       </a>
       <a href="${data.codeUrl}" target="_blank" 
-         class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 
-                rounded-full text-lg text-center transition-transform transform hover:scale-105">
+         class="bg-gray-900 text-white hover:bg-gray-800 
+                font-bold py-3 px-6 rounded-full text-lg text-center 
+                transition-transform transform hover:scale-105">
          View Code
       </a>
     </div>
   </div>
 `;
+
 
 
 
