@@ -17,6 +17,41 @@
     />
     <script src="script.js" defer></script>
     <style>
+
+
+
+
+      /* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(80px); /* start lower */
+  transition: all 10ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0); /* slides up into place */
+}
+
+/* Staggered children animation */
+.reveal > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.active > *:nth-child(1) { transition-delay: 0.1s; }
+.reveal.active > *:nth-child(2) { transition-delay: 0.2s; }
+.reveal.active > *:nth-child(3) { transition-delay: 0.3s; }
+.reveal.active > *:nth-child(4) { transition-delay: 0.4s; }
+.reveal.active > *:nth-child(5) { transition-delay: 0.5s; }
+
       body {
         font-family: "Inter", sans-serif;
         background-color: #f3f4f6;
@@ -147,44 +182,51 @@
         <a href="#projects" class="block text-gray-700">Projects</a>
         <a href="#contact" class="block text-gray-700">Contact</a>
       </div>
+
+
+      
     </header>
 
     <main>
       <!-- Hero Section -->
       <section
-        id="hero"
-        class="relative h-screen flex items-center justify-center text-center"
-        style="
-          background-image: url(./bg2222.jpg);
-          background-position: center;
-          background-size: contain;
-        "
+  id="hero"
+  class="relative h-screen flex items-center justify-center text-center bg-cover bg-center"
+  style="background-image: url(./bg2222.jpg);"
+>
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 dark:from-gray-900/80 dark:to-gray-900/80"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas" class="w-0"></canvas>
+
+  <!-- Content -->
+  <div class="relative z-10 px-4 w-screen">
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-left pl-6"
+    >
+      <span class="gradient-text text-white dark:text-indigo-400">Sajan Rana</span>
+    </h1>
+
+    <p
+      class="text-xl md:text-2xl lg:text-3xl font-medium text-gray-200 dark:text-gray-300 mb-8 text-left pl-6"
+    >
+      I'm a <span id="typing-text" class="font-bold text-yellow-300 dark:text-pink-400"></span>
+      <span class="typing-cursor"></span>
+    </p>
+
+    <div class="text-left pl-6">
+      <a
+        href="#projects"
+        class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 dark:bg-indigo-600 dark:hover:bg-indigo-700"
       >
-        <canvas id="particle-canvas" class="w-0"></canvas>
+        View My Work
+      </a>
+    </div>
+  </div>
+</section>
 
-        <div class="relative z-10 px-4 w-screen">
-          <h1
-            class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-left pl-6"
-          >
-            <span class="gradient-text text-white">Sajan Rana</span>
-          </h1>
-          <p
-            class="text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 text-left pl-6"
-          >
-            I'm a <span id="typing-text" class="font-bold text-gray-800"></span
-            ><span class="typing-cursor"></span>
-          </p>
-
-          <div class="text-left pl-6">
-            <a
-              href="#projects"
-              class="bg-pink-600 text-left hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105"
-            >
-              View My Work
-            </a>
-          </div>
-        </div>
-      </section>
 
       <!-- About Section -->
       <section id="about" class="py-10 px-4 sm:px-8 md:px-12">
@@ -193,7 +235,7 @@
             class="text-center reveal flex justify-center bg-gray-200 rounded-2xl shadow-2xl"
           >
             <div class="reveal">
-              <h2 class="text-4xl font-bold mb-6 mt-6">About Me</h2>
+              <h2 class="text-4xl font-bold mb-6 mt-6 ">About Me</h2>
               <p
                 class="text-gray-600 mb-16 text-lg font-bold text-center justify-center"
               >
@@ -240,7 +282,7 @@
           <div
             class="text-center mb-16 reveal flex justify-center bg-gray-200 rounded-2xl shadow-2xl"
           >
-            <h2 class="text-4xl font-bold mb-4 underline mt-4">Education</h2>
+            <h2 class="text-4xl font-bold mb-4 underline mt-4 highlight ">Education</h2>
           </div>
           <div class="container-padding mx-auto grid gap-4">
             <div class="space-y-12">

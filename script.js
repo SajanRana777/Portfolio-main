@@ -188,6 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  
+
+
+
+
+
+
+
     modal.classList.remove('hidden');
     setTimeout(() => modalContent.classList.remove('scale-95', 'opacity-0'), 50);
     document.getElementById('close-modal').addEventListener('click', closeModal);
@@ -233,3 +241,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+  const navLinks = document.querySelectorAll("nav a");
+
+  // Reveal on scroll
+  const revealOnScroll = () => {
+    const trigger = window.innerHeight * 0.85;
+    reveals.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < trigger) {
+        el.classList.add("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+
+  // Highlight active section in nav
+  const sections = document.querySelectorAll("section[id]");
+  const highlightOnScroll = () => {
+    let scrollY = window.pageYOffset + 150; // offset for header
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute("id");
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${sectionId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  };
+
+  window.addEventListener("scroll", highlightOnScroll);
+  highlightOnScroll();
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    reveals.forEach((el) => {
+      const boxTop = el.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  // Run on scroll
+  window.addEventListener("scroll", revealOnScroll);
+
+  // Run on page load
+  revealOnScroll();
+});
+
+
+
